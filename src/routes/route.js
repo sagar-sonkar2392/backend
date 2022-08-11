@@ -51,10 +51,10 @@ router.post("/test-post-2", function(req, res) {
 })
 
 router.post("/test-post-3", function(req, res) {
-    // let id = req.body.user
-    // let pwd= req.body.password
+    let id = req.body.user
+    let pwd= req.body.password
 
-    // console.log( id , pwd)
+    console.log( id , pwd)
 
     console.log( req.body )
 
@@ -69,5 +69,125 @@ router.post("/test-post-4", function(req, res) {
     arr.push(ele)
     res.send(  { msg: arr , status: true }  )
 })
+
+router.post("/my/test-post", function(req, res) {
+    let arr= [ "sagar",{
+        hobbies:"cricket"
+    }]
+    let ele= req.body.profession
+    arr.push(ele)
+    res.send(  { msg: arr , status: true }  )
+})
+
+router.post("/my/test-post-2", function(req, res) {
+    let arr= [{
+        naMe:"sagar",
+        gender:"male"
+    }]
+    let ele= req.body
+    arr.push(ele)
+
+    res.send(  { msg: arr , status: true }  )
+})
+
+// problem=1
+
+let players =
+   [
+       {
+           "name": "manish",
+           "dob": "1/1/1995",
+           "gender": "male",
+           "city": "jalandhar",
+           "sports": [
+               "swimming"
+           ]
+       },
+       {
+           "name": "gopal",
+           "dob": "1/09/1995",
+           "gender": "male",
+           "city": "delhi",
+           "sports": [
+               "soccer"
+           ],
+       },
+       {
+           "name": "lokesh",
+           "dob": "1/1/1990",
+           "gender": "male",
+           "city": "mumbai",
+           "sports": [
+               "soccer"
+           ],
+       },
+   ]
+
+   router.post('/players', function (req, res) {
+
+    let newPlayer = req.body;
+    let oldPlayers =players;
+
+    for(i=0; i<oldPlayers.length; i++){
+        let oldPlayers =players[i]
+        if(newPlayer.name == oldPlayers.name)
+        return res.send("The player name is already exist")
+
+    }
+    oldPlayers.push(newPlayer)
+
+       //LOGIC WILL COME HERE
+       res.send(  { data: players , status: true }  )
+       console.log(newPlayer)
+   })
+
+//    problem=2
+
+let person = 
+[
+    {
+      name : "PK",
+     age: 10,
+     Votingstatus :false
+   },
+   {
+     name: "AA",
+     age :70,
+     Votingstatus : false
+   },
+   {
+     name: "SK",
+     age :20,
+     Votingstatus : false
+   },
+   {
+     name: "SC",
+      age :5,
+      Votingstatus : false
+    },
+    {
+      name: "HO",
+       age :40,
+       Votingstatus : false
+    }
+]
+
+router.post('/votingage', function(req , res){
+    let arr =[];
+    let personAge = req.query.age;
+    for(i=0; i<person.length; i++){
+        if(person[i].age> personAge ){
+            person[i].Votingstatus = true; 
+          arr.push(person[i]);       
+        }
+    }
+    res.send(arr);
+    console.log(arr);
+})
+
+
+
+
+
 
 module.exports = router;
