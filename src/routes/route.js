@@ -68,8 +68,8 @@ router.get("/test-me", function (req, res) {
 
 router.post("/createProduct", productController.createProduct);
 
-router.post("/createUser",   UserController.createUser);   // commonMW.statusCheck
+router.post("/createUser",  commonMW.statusCheck, UserController.createUser);   // commonMW.statusCheck
 
-router.post("/createOrder",   OrderController.createOrder);  // commonMW.statusCheck
+router.post("/createOrder",  commonMW.statusCheck, OrderController.createOrder);  // commonMW.statusCheck
 
 module.exports = router;
