@@ -23,4 +23,13 @@ const jwtvalidation = async function (req, res,next) {
     else {next()}
 }
 
+const checkIfAuthourized = function(req,res,next){
+  let requestedUserId = req.params.userid
+  if(requestedUserId!==req.loggedInUser){
+    return res.send({status:false, msg:"permission denied"})
+  } 
+  next()
+}
+// else {next()}
 module.exports.jwtvalidation=jwtvalidation;
+module.exports.checkIfAuthourized=checkIfAuthourized
