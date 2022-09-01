@@ -25,7 +25,7 @@ const jwtvalidation = async function (req, res,next) {
 
 const checkIfAuthourized = function(req,res,next){
   let requestedUserId = req.params.userid
-  if(requestedUserId!==req.loggedInUser){
+  if(requestedUserId!==req.loginUser){
     return res.send({status:false, msg:"permission denied"})
   } 
   next()
