@@ -1,8 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const intern =require("../controllers/internController")
+const internController =require("../controllers/internController")
+const collegeController = require("../controllers/collegeController");
 
 
-router.post("/functionup/interns", intern.interns)
+router.post("/functionup/interns", internController.createIntern)
+
+
+router.post('/functionup/colleges',collegeController.collegeCreate)
+
+
+router.get("/functionup/internList",internController.getInternByCollege);
+
 
 module.exports = router;

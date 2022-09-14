@@ -1,7 +1,7 @@
 const internModel = require("../models/internModel")
 const collegeModel = require("../models/collegeModel")
 
-const interns = async function(req,res){
+const createIntern = async function(req,res){
     try {
 
         let data = req.body;
@@ -31,7 +31,36 @@ const interns = async function(req,res){
     
 
 }
-module.exports.interns=interns
+
+let getInternByCollege = async function (req, res) {
+    try {
+        
+        let collegeName = req.query.collegeName;
+
+        const data = await collegeModel.findOne({ name: collegeName,isDeleted:false })
+
+        if (!data)  return res.status(404).send({ status: false, message: `college: ${collegeName} not found...` }) 
+
+        let collegeId = data._id
+
+        let intern = await internModel.find({ collegeId: collegeId, isDeleted:false }).select({ _id: 1, name: 1, email: 1, mobile: 1 })
+
+
+        return res.status(200).send({
+            status: true,
+            data: {
+                name: data.name,
+                fullName: data.fullName,
+                logoLink: data.logoLink,
+                interns: intern
+            }
+        })
+
+    } catch (err) {  return res.status(500).send({ status: false, message: err.message })  }
+}
+
+
+module.exports = {createIntern, getInternByCollege}
 
 // Intern
 //    {
