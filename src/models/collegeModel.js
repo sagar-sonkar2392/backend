@@ -10,7 +10,6 @@ const collegeSchema = new mongoose.Schema({
 
     fullName:{
         type:String,
-        unique:true,
         required:true,
         trim:true
     },
@@ -28,9 +27,3 @@ const collegeSchema = new mongoose.Schema({
 }, {timestamps:true});
 
 module.exports = mongoose.model('College', collegeSchema);
-
-// College Model
-
-// { name: { mandatory, unique, example iith}, fullName: {mandatory, example `Indian Institute of Technology, Hyderabad`}, logoLink: {mandatory}, isDeleted: 
-
-// {boolean, default: false} }
