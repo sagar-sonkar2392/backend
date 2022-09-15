@@ -32,7 +32,10 @@ const collegeCreate = async (req, res) => {
     }
 
     let checkCollege = await collegeModel.findOne({fullName:fullName})
-    if(checkCollege) return res.status(400).send({status:false,message:"This college already exist"})
+    if(checkCollege) return res.status(400).send({status:false,message:"This college fullName already exist"})
+
+    let checkName = await collegeModel.findOne({name:name})
+    if(checkName) return res.status(400).send({status:false,message:"This abbrevation name already exist"})
 
     if (!logoLink==logoLink || logoLink=="") {
         return res.status(400).send({ status: false, msg: 'Please fill logo link' })
@@ -41,9 +44,14 @@ const collegeCreate = async (req, res) => {
 
 
 
-    let collegeData = await collegeModel.create(data)
+    let collegeData = await collegeModel.create(data);
 
-    res.send({ data: collegeData })
+    let isDeleted = collegeData.isDeleted;
+
+    data = {name, fullName, logoLink, isDeleted}
+    
+
+    res.send({ data: data })
 
 } catch (error) {
     return res.status(500).send({status:false, message:error.message})

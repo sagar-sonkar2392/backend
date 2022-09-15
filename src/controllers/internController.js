@@ -57,11 +57,14 @@ const createIntern = async function (req, res) {
         let checkCollege = await collegeModel.findOne({ name: collegeName })
 
         let collegeId = checkCollege._id
-        data = { name, mobile, email, collegeId }
 
-        let createIntern = await internModel.create(data)
+        let isDeleted = checkCollege.isDeleted
+        
+        data = { name, mobile, email, collegeId, isDeleted }
 
-        return res.status(201).send({ status: true, data: createIntern })
+        await internModel.create(data)
+
+        return res.status(201).send({ status: true, data: data })
 
     } catch (error) {
         return res.status(500).send({ status: false, message: error.message })
@@ -82,8 +85,6 @@ let getInternByCollege = async function (req, res) {
         const data = await collegeModel.findOne({ name: collegeName, isDeleted: false })
 
         if (!data) return res.status(404).send({ status: false, message: `college: ${collegeName} not found...` })
-
-        if (Object.keys(data).length == 0) return res.status(404).send({ status: false, message: "Its already deleted" })
 
         //=========================================== Get intern data =================================================
 

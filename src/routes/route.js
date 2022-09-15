@@ -15,3 +15,5 @@ router.get("/functionup/collegeDetails",internController.getInternByCollege);
 
 
 module.exports = router;
+
+
