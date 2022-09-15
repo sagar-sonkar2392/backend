@@ -79,14 +79,14 @@ let getInternByCollege = async function (req, res) {
 
         let collegeName = req.query.collegeName;
 
-        //=============================== Check college name validation ==================================================
+        //=========================== Check college name validation ==================================================
 
         if (!collegeName) return res.status(404).send({ status: false, message: "please provide collegeName" });
         const data = await collegeModel.findOne({ name: collegeName, isDeleted: false })
 
         if (!data) return res.status(404).send({ status: false, message: `college: ${collegeName} not found...` })
 
-        //=========================================== Get intern data =================================================
+        //======================================== Get intern data =================================================
 
         let collegeId = data._id
 

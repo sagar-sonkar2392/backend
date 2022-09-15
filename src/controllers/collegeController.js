@@ -51,7 +51,7 @@ const collegeCreate = async (req, res) => {
     data = {name, fullName, logoLink, isDeleted}
     
 
-    res.send({ data: data })
+    res.status(201).send({ data: data })
 
 } catch (error) {
     return res.status(500).send({status:false, message:error.message})
