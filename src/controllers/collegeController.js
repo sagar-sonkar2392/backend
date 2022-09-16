@@ -1,6 +1,6 @@
 const collegeModel = require("../models/collegeModel");
 const regexUrl = /(https?:\/\/[^\s]+)/g
-const collegeReg = /^[a-zA-Z ]+$/;
+const collegeReg = /^[a-zA-Z ,'-]+$/;
 
 // =====================create college======================================
 
