@@ -10,7 +10,7 @@ const collegeCreate = async (req, res) => {
     let data = req.body
     let { name, fullName, logoLink } = data;
 
-    if(Object.keys(data).length<3) return res.status(404).send({status:false, message:"please fill required value which is mandatory"})
+    if(Object.keys(data).length<3) return res.status(400).send({status:false, message:"please fill required value which is mandatory"})
 
     if (!name==name || name=="" ) {
         return res.status(400).send({ status: false, msg: 'Please fill name'});
@@ -51,7 +51,7 @@ const collegeCreate = async (req, res) => {
     data = {name, fullName, logoLink, isDeleted}
     
 
-    res.status(201).send({ data: data })
+    res.status(201).send({status:true, data: data })
 
 } catch (error) {
     return res.status(500).send({status:false, message:error.message})
