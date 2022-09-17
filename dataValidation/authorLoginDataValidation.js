@@ -1,5 +1,5 @@
 // const authorModel = require("../models/authorModel")
-const passValidation = require("../dataValidation/passwordValidation")
+const passValidation = require("../dataValidation/passwordValidation");
 const validator = require("email-validator");
 
 

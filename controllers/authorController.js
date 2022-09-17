@@ -11,7 +11,7 @@ const createAuthor = async function (req, res) {
         let data = req.body;
         let {password} = data;
         //-------------------------> (password hash by using bcrypt) <----------------------//
-        const hashedPassword = await bcrypt.hash(password, 10)
+        const hashedPassword = await bcrypt.hash(password, 10);
 
         //-------------------------> (Replace password in hashing password) <----------------------//
 

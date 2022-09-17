@@ -1,6 +1,6 @@
 const validator = require("email-validator");
-const authorModel = require("../models/authorModel")
-const passValidation = require("../dataValidation/passwordValidation")
+const authorModel = require("../models/authorModel");
+const passValidation = require("../dataValidation/passwordValidation");
 
 const authorDataValidation = async function (req, res, next) {
     try {

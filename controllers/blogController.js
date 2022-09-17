@@ -24,8 +24,8 @@ const createBlog = async function (req, res) {
 
 const findQuery = async function (req, res) {
     try {
-        let data = req.query
-        const newData = await blogModel.find(data).find({isDeleted: false})
+        let data = req.query;
+        const newData = await blogModel.find(data).find({isDeleted: false});
         if (newData.length < 1) return res.status(404).send({ status: false, msg: "Data not found" })
         return res.status(200).send({ status: true, data: newData })
     } catch (error) {

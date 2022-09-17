@@ -43,23 +43,23 @@ router.post("/login", authorLoginDataValidation.authorLoginDataValidation  , Aut
 
 //-------------------------> (When blogs creat,  call this api) <----------------------------------//
 
-router.post("/blogs", blogsCreatValidation.blogsCreatValidation, authentication.authentication, authorization.authorizetionByBody, blogController.createBlog)
+router.post("/blogs", blogsCreatValidation.blogsCreatValidation, authentication.authentication, authorization.authorizetionByBody, blogController.createBlog);
 
 //-------------------------> (When blogs search,  call this api) <----------------------------------//
 
-router.get("/blogs", authentication.authentication, authorization.authorizetionByQuery, blogController.findQuery)
+router.get("/blogs", authentication.authentication, authorization.authorizetionByQuery, blogController.findQuery);
 
 //-------------------------> (When blog update,  call this api) <----------------------------------//
 
-router.put("/blogs/:blogId",blogsUpdateValidation.blogsUpdateValidation   ,authentication.authentication, authorization.authorizetionByParams, blogController.blogUpdate)
+router.put("/blogs/:blogId",blogsUpdateValidation.blogsUpdateValidation   ,authentication.authentication, authorization.authorizetionByParams, blogController.blogUpdate);
 
 //-------------------------> (When blog deleted by path params,  call this api) <----------------------------------//
 
-router.delete("/blogs/:blogId", authentication.authentication, authorization.authorizetionByParams, blogController.deleteByblogId)
+router.delete("/blogs/:blogId", authentication.authentication, authorization.authorizetionByParams, blogController.deleteByblogId);
 
 //-------------------------> (When blogs deleted by query,  call this api) <----------------------------------//
 
-router.delete("/blogs", authentication.authentication, authorization.authorizetionByQuery, blogController.deleteByQuery)
+router.delete("/blogs", authentication.authentication, authorization.authorizetionByQuery, blogController.deleteByQuery);
 
 //============================================================================================================================//
 

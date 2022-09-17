@@ -34,7 +34,7 @@ const authorizetionByQuery = async function (req, res, next) {
         let {title, body, authorId, tags, category, subcategory} = data;
 
         if (!(title || body || authorId || tags || category || subcategory)) {
-            return res.status(400).send({ status: false, msg: "Query cann't empty." })
+            return res.status(400).send({ status: false, msg: "Query cannot be empty." })
         }
 
         // data["isDeleted"] = false
