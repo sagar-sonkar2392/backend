@@ -23,7 +23,7 @@ const isTitle = (title) => {
             return "Make sure title is content title."
         }
     } catch (err) {
-        return res.status(500).send({ status: false, msg: err.message })
+        return res.status(500).send({ status: false, msg: err.message });
     }
 }
 
@@ -113,7 +113,7 @@ const isTags = (tags) => {
         }
 
     } catch (err) {
-        return res.status(500).send({ status: false, msg: err.message })
+        return res.status(500).send({ status: false, msg: err.message });
     }
 }
 

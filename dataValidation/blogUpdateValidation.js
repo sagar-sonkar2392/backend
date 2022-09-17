@@ -12,7 +12,7 @@ const blogsUpdateValidation = async function (req, res, next) {
 
         //-------------------------> (If all is good then call next function) <----------------------//
 
-        next()
+        next();
 
     } catch (err) {
         res.status(500).send({ status: false, msg: err.message })
