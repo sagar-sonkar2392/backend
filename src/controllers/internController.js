@@ -88,7 +88,7 @@ let getInternByCollege = async function (req, res) {
 
         //======================================== Get intern data =================================================
 
-        let collegeId = data._id
+        let collegeId = data._id;
 
         let intern = await internModel.find({ collegeId: collegeId, isDeleted: false }).select({ _id: 1, name: 1, email: 1, mobile: 1 })
 
@@ -98,7 +98,7 @@ let getInternByCollege = async function (req, res) {
                 name: data.name,
                 fullName: data.fullName,
                 logoLink: data.logoLink,
-                interns: intern
+                interns: intern,
             }
         })
 

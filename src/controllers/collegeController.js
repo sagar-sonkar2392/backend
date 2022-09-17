@@ -7,7 +7,7 @@ const collegeReg = /^[a-zA-Z ,'-]+$/;
 const collegeCreate = async (req, res) => {
     try {
 
-    let data = req.body
+    let data = req.body;
     let { name, fullName, logoLink } = data;
 
     if(Object.keys(data).length<3) return res.status(400).send({status:false, message:"please fill required value which is mandatory"})
